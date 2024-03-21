@@ -20,10 +20,7 @@
 				<h1>🐙 GitHub Proxy</h1>
 				<div class="input">
 					<form
-						onsubmit="if(document.getElementById('q').value.trim() !== '') { let inputValue = document.getElementById("q").value.trim();
-						if (inputValue !== "") {
-							window.open("/" + inputValue);
-						}; return false; }">
+						onsubmit="if(document.getElementById('q').value.trim() !== '') { let inputValue = document.getElementById('q').value.trim(); if (inputValue !== '') {window.open('/' + inputValue);}; return false; }">
 						<input type="url" id="q" placeholder="https://github.com/…"	autofocus oninput="let baseUrl = 'https://github.geekery.cn/';let inputValue = document.getElementById('q').value; document.getElementById('quicktext').textContent = baseUrl + inputValue;"/>
 						<button type="submit">→</button>
 					</form>
