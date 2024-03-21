@@ -1,63 +1,79 @@
 <!doctype html>
 <html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta	name="viewport"	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>GitHub Proxy</title>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="icon" href="favicon.svg" />
+		<meta name="robots" content="noindex nofollow" />
+		<style type="text/css">
+		.wrapper {position: relative;}
+		#quickinput {position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;}
+		</style>
+	</head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>GitHub Proxy</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="favicon.svg" />
-  <meta name="robots" content="noindex nofollow" />
-</head>
+	<body>
+		<div class="main">
+			<div class="card">
+				<h1>🐙 GitHub Proxy</h1>
+				<div class="input">
+					<form
+						onsubmit="if(document.getElementById('q').value.trim() !== '') { let inputValue = document.getElementById("q").value.trim();
+						if (inputValue !== "") {
+							window.open("/" + inputValue);
+						}; return false; }">
+						<input type="url" id="q" placeholder="https://github.com/…"	autofocus oninput="let baseUrl = 'https://github.geekery.cn/';let inputValue = document.getElementById('q').value; document.getElementById('quicktext').textContent = baseUrl + inputValue;"/>
+						<button type="submit">→</button>
+					</form>
+				</div>
+				<div class="quickcopy">
+					<div class="wapper">
+						<a id="quicktext">https://github.geekery.cn/</a><textarea id="quickinput">这是幕后黑手</textarea>
+						<button class="niceButton" onclick="var text = document.getElementById('quicktext').innerHTML; var quickText = document.getElementById('quickinput'); quickText.value = text; quickText.select(); document.execCommand('copy');">复制到粘贴板</button>
+					</div>
+				</div>
+				<footer>
+					<div class="tips">
+						<p>
+							GitHub文件链接带不带协议头都可以，支持release、archive以及文件，右键复制出来的链接都是符合标准的。
+						</p>
+						<p>注意，不支持项目文件夹，请使用Git。</p>
+					</div>
 
-<body>
-  <div class="main">
-    <div class="card">
-      <h1>🐙 GitHub Proxy</h1>  
-      <div class="input">
-        <form>
-          <input type="url" id="q" placeholder="https://github.com/…" autofocus />
-          <button type="submit" onclick="if(document.getElementById('q').value.trim() !== '') { window.open('/'+document.getElementById('q').value); }">
-            →
-          </button>
-        </form>
-      </div>
-      <footer>
-        <div class="tips">
-          <p>
-            GitHub文件链接带不带协议头都可以，支持release、archive以及文件，右键复制出来的链接都是符合标准的。
-          </p>
-          <p>注意，不支持项目文件夹，请使用Git。</p>
-        </div>
-        <div class="example">
-          <p>
-            分支源码：<font color="#282a36">https://github.geekery.cn/</font>https://github.com/user/project/archive/master.zip
-          </p>
-          <p>
-            release源码：<font color="#282a36">https://github.geekery.cn/</font>https://github.com/user/project/archive/v0.1.0.tar.gz
-          </p>
-          <p>
-            release文件：<font color="#282a36">https://github.geekery.cn/</font>https://github.com/user/project/releases/download/v0.1.0/example.zip
-          </p>
-          <p>
-            分支文件：<font color="#282a36">https://github.geekery.cn/</font>https://github.com/user/project/blob/master/filename
-          </p>
-          <p>
-            Raw：<font color="#282a36">https://github.geekery.cn/</font>https://raw.githubusercontent.com/user/project/archive/master.zip
-          </p>
-          <p>
-            使用Git: git clone
-            <font color="#282a36">https://github.geekery.cn/</font>https://github.com/user/project
-          </p>
-        </div>
-        powered with ❤ by
-        <a href="https://github.com/Paper-Dragon/github-proxy">github-proxy</a>
-         
-        <a href="https://www.geekery.cn/free-service/github-direct.html">不会用？点击这里访问文档或者问问先辈们</a>
-      </footer>
-    </div>
-  </div>
-</body>
+					<div class="example">
+            <p>
+						<a>分支源码：</a> <a><font color="#282a36">https://github.geekery.cn/</font>https://github.com/user/project/archive/master.zip</a>
+            </a>
+            </p>
+						<p>
+							<a>release源码：</a><a><font color="#282a36">https://github.geekery.cn/</font>https://github.com/user/project/archive/v0.1.0.tar.gz</a>
+            </p>
+						<p>
+							<a>release文件：</a><a><font color="#282a36">https://github.geekery.cn/</font>https://github.com/user/project/releases/download/v0.1.0/example.zip</a>
+            </p>
+						<p>
+							<a>分支文件：</a><a><font color="#282a36">https://github.geekery.cn/</font>https://github.com/user/project/blob/master/filename</a>
+            </p>
+						<p>
+							<a>Raw：</a><a><font color="#282a36">https://github.geekery.cn/</font>https://raw.githubusercontent.com/user/project/archive/master.zip</a>
+            </p>
+						<p>
+							<a>使用Git: git clone</a><a><font color="#282a36">https://github.geekery.cn/</font>https://github.com/user/project</a>
+						</p>
+					</div>
+					powered with ❤ by
+					<a href="https://github.com/Paper-Dragon/github-proxy"
+						>github-proxy</a
+					>
 
+					<a
+						href="https://www.geekery.cn/free-service/github-direct.html"
+						>不会用？点击这里访问文档或者问问先辈们</a
+					>
+				</footer>
+			</div>
+		</div>
+	</body>
 </html>

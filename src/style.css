@@ -44,6 +44,45 @@ h1 {
     margin-left: 7.5em;
 }
 
+
+.niceButton {
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    background-color: #10b9d6;
+    border: none;
+    border-radius: 11px;
+    outline: none;
+    padding: 3px 10px;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 5px #999;
+    float: right;
+}
+.niceButton:hover {
+background-color: #1795bb;
+}
+.niceButton:active {
+    background-color: #1795bb;
+    box-shadow: 0 5px #666;
+    transform:translateY(4px);
+}
+
+.wapper {
+    background-color: #88c0d0;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#quicktext {
+    font-size: 16px;
+    color: #000;
+    
+}
+
+
 p {
     display: block;
     margin-block-start: 1em;
