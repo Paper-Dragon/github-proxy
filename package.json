@@ -56,12 +56,12 @@
     "worktop": "next"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "4.20240329.0",
+    "@cloudflare/workers-types": "4.20240405.0",
     "@size-limit/preset-small-lib": "11.1.2",
     "parcel": "2.12.0",
     "rimraf": "5.0.5",
     "size-limit": "11.1.2",
-    "wrangler": "3.41.0",
+    "wrangler": "3.50.0",
     "xo": "0.58.0"
   },
   "peerDependencies": {
