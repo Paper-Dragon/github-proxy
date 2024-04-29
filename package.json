@@ -4,7 +4,7 @@
   "description": "GitHub proxy on Cloudflare Workers",
   "repository": "https://github.com/mchaNetwork/github-proxy",
   "license": "MIT",
-  "author": "mochaaP <npm@mochaa.ws>",
+  "author": "mochaaP <npm@mochaa.ws> && Paperdragon <2678885646@qq.com>",
   "type": "module",
   "main": "dist/_worker.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "deploy": "npm run test && npm run build && wrangler pages deploy dist",
     "lint": "eslint .",
     "size": "size-limit",
-    "start": "wrangler pages dev dist --compatibility-date=2024-01-01",
+    "start": "wrangler pages dev dist",
     "test": "npm run lint && npm run size"
   },
   "browserslist": "Firefox ESR, iOS >= 12.5, Chrome >= 87",
