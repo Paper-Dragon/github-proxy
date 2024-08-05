@@ -62,7 +62,7 @@
     "parcel": "2.12.0",
     "rimraf": "^6.0.1",
     "size-limit": "^11.1.2",
-    "wrangler": "^3.62.0",
+    "wrangler": "^3.68.0",
     "xo": "0.59.3"
   },
   "peerDependencies": {
