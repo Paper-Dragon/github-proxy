@@ -17,51 +17,21 @@
     "test": "npm run size"
   },
   "browserslist": "Firefox ESR, iOS >= 12.5, Chrome >= 87",
-  "eslintConfig": {
-    "env": {
-      "es2024": true,
-      "node": true
-    },
-    "parserOptions": {
-      "ecmaVersion": "latest",
-      "sourceType": "module"
-    },
-    "extends": [
-      "xo",
-      "./node_modules/xo/config/plugins.cjs"
-    ],
-    "overrides": [
-      {
-        "files": [
-          "*.ts",
-          "*.tsx"
-        ],
-        "extends": [
-          "xo-typescript"
-        ],
-        "rules": {
-          "@typescript-eslint/ban-types": "off",
-          "import/extensions": "off",
-          "import/no-named-as-default": "off",
-          "n/prefer-global/process": "off"
-        }
-      }
-    ],
-    "ignorePatterns": [
-      "dist"
-    ]
-  },
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.8.0",
+    "eslint-config-xo": "^0.46.0",
+    "eslint-config-xo-typescript": "^7.0.0",
     "nord": "nordtheme/nord",
     "ress": "^5.0.2",
     "worktop": "next"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "4.20240925.0",
-    "@size-limit/preset-small-lib": "11.1.5",
+    "@size-limit/preset-small-lib": "^11.1.6",
+    "eslint-define-config": "^2.1.0",
     "parcel": "2.12.0",
     "rimraf": "^6.0.1",
-    "size-limit": "^11.1.5",
+    "size-limit": "^11.1.6",
     "wrangler": "^3.78.10",
     "xo": "0.59.3"
   },
