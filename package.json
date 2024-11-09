@@ -18,7 +18,7 @@
   },
   "browserslist": "Firefox ESR, iOS >= 12.5, Chrome >= 87",
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.12.2",
+    "@typescript-eslint/eslint-plugin": "^8.13.0",
     "eslint-config-xo": "^0.46.0",
     "eslint-config-xo-typescript": "^7.0.0",
     "nord": "nordtheme/nord",
@@ -26,14 +26,14 @@
     "worktop": "next"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "4.20241022.0",
+    "@cloudflare/workers-types": "^4.20241106.0",
     "@size-limit/preset-small-lib": "^11.1.6",
     "eslint-define-config": "^2.1.0",
     "parcel": "2.12.0",
     "rimraf": "^6.0.1",
     "size-limit": "^11.1.6",
-    "wrangler": "^3.84.1",
-    "xo": "0.59.3"
+    "wrangler": "^3.86.0",
+    "xo": "^0.59.3"
   },
   "peerDependencies": {
     "typescript": "^5.3"
