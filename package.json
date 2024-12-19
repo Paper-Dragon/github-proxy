@@ -33,7 +33,7 @@
     "rimraf": "^6.0.1",
     "size-limit": "^11.1.6",
     "svgo": "^3.3.2",
-    "wrangler": "^3.93.0",
+    "wrangler": "^3.99.0",
     "xo": "^0.60.0"
   },
   "peerDependencies": {
