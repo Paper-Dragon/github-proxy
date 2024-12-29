@@ -1,11 +1,11 @@
 {
   "name": "github-proxy",
+  "type": "module",
   "private": true,
   "description": "GitHub proxy on Cloudflare Workers",
-  "repository": "https://github.com/mchaNetwork/github-proxy",
-  "license": "MIT",
   "author": "mochaaP <npm@mochaa.ws> && Paperdragon <2678885646@qq.com>",
-  "type": "module",
+  "license": "MIT",
+  "repository": "https://github.com/Paper-Dragon/github-proxy",
   "main": "dist/_worker.js",
   "scripts": {
     "build": "rimraf dist && parcel build",
@@ -13,31 +13,26 @@
     "deploy": "npm run test && npm run build && wrangler pages deploy dist",
     "lint": "eslint .",
     "size": "size-limit",
-    "start": "wrangler pages dev dist",
+    "start": "wrangler pages dev dist --compatibility-date=2024-12-01",
     "test": "npm run size"
   },
   "browserslist": "Firefox ESR, iOS >= 12.5, Chrome >= 87",
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.17.0",
-    "eslint-config-xo": "^0.46.0",
-    "eslint-config-xo-typescript": "^7.0.0",
-    "nord": "github:nordtheme/nord",
+    "nord": "nordtheme/nord",
     "ress": "^5.0.2",
-    "worktop": "^0.8.0-next.18"
+    "worktop": "next"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20241205.0",
-    "@size-limit/preset-small-lib": "^11.1.6",
-    "eslint-define-config": "^2.1.0",
-    "parcel": "2.13.2",
-    "rimraf": "^6.0.1",
-    "size-limit": "^11.1.6",
-    "svgo": "^3.3.2",
-    "wrangler": "^3.93.0",
-    "xo": "^0.60.0"
-  },
-  "peerDependencies": {
-    "typescript": "^5.7.2"
+    "@cloudflare/workers-types": "4.20241224.0",
+    "@mochaa/eslintrc": "0.1.12",
+    "@size-limit/preset-small-lib": "11.1.6",
+    "eslint": "9.17.0",
+    "parcel": "2.13.3",
+    "rimraf": "6.0.1",
+    "size-limit": "11.1.6",
+    "svgo": "3.3.2",
+    "typescript": "5.7.2",
+    "wrangler": "3.99.0"
   },
   "@parcel/transformer-css": {
     "drafts": {
