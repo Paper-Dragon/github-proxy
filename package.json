@@ -18,12 +18,12 @@
   },
   "browserslist": "Firefox ESR, iOS >= 12.5, Chrome >= 87",
   "dependencies": {
-    "nord": "nordtheme/nord",
+    "nord": "github:nordtheme/nord",
     "ress": "^5.0.2",
-    "worktop": "next"
+    "worktop": "^0.8.0-next.18"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "4.20241224.0",
+    "@cloudflare/workers-types": "4.20250109.0",
     "@mochaa/eslintrc": "0.1.12",
     "@size-limit/preset-small-lib": "11.1.6",
     "eslint": "9.17.0",
@@ -31,8 +31,8 @@
     "rimraf": "6.0.1",
     "size-limit": "11.1.6",
     "svgo": "3.3.2",
-    "typescript": "5.7.2",
-    "wrangler": "3.99.0"
+    "typescript": "5.7.3",
+    "wrangler": "3.101.0"
   },
   "@parcel/transformer-css": {
     "drafts": {
