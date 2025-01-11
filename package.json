@@ -18,9 +18,9 @@
   },
   "browserslist": "Firefox ESR, iOS >= 12.5, Chrome >= 87",
   "dependencies": {
-    "nord": "nordtheme/nord",
+    "nord": "github:nordtheme/nord",
     "ress": "^5.0.2",
-    "worktop": "next"
+    "worktop": "^0.8.0-next.18"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "4.20241224.0",
