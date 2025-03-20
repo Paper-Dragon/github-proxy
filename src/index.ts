@@ -8,6 +8,6 @@ app.mount('/http:/', routes);
 bind(app);
 
 // eslint-disable-next-line regexp/no-empty-group
-app.add('GET', /(?:)/, async (request, context) => context.bindings.ASSETS.fetch(request));
+app.add('GET', /(?:)/, async (request, context) => (context.bindings.ASSETS as {fetch: typeof fetch}).fetch(request));
 
 export default app;

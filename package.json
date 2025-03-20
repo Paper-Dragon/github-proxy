@@ -10,28 +10,28 @@
   "scripts": {
     "build": "rimraf dist && parcel build",
     "update": "npm update -S",
-    "deploy": "npm run test && npm run build && wrangler pages deploy dist",
+    "deploy": "npm run test && rimraf dist && parcel build && wrangler pages deploy dist",
     "lint": "eslint .",
     "size": "size-limit",
-    "start": "wrangler pages dev dist --compatibility-date=2024-12-01",
+    "start": "wrangler pages dev dist",
     "test": "npm run size"
   },
   "browserslist": "Firefox ESR, iOS >= 12.5, Chrome >= 87",
   "dependencies": {
-    "nord": "nordtheme/nord",
+    "nord": "github:nordtheme/nord",
     "ress": "^5.0.2",
-    "worktop": "next"
+    "worktop": "^0.8.0-next.18"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "4.20241224.0",
+    "@cloudflare/workers-types": "^4.20250319.0",
     "@mochaa/eslintrc": "0.1.12",
-    "@size-limit/preset-small-lib": "11.1.6",
-    "eslint": "9.17.0",
+    "@size-limit/preset-small-lib": "11.2.0",
+    "eslint": "9.22.0",
     "parcel": "2.13.3",
     "rimraf": "6.0.1",
-    "size-limit": "11.1.6",
+    "size-limit": "11.2.0",
     "svgo": "3.3.2",
-    "typescript": "5.7.2",
+    "typescript": "5.7.3",
     "wrangler": "3.99.0"
   },
   "@parcel/transformer-css": {
