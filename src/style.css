@@ -1,7 +1,7 @@
 body {
-    /* font-family: -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    font-family: -apple-system, BlinkMacSystemFont, system-ui, Roboto,
         'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-        'Segoe UI Emoji', 'Segoe UI Symbol'; */
+        'Segoe UI Emoji', 'Segoe UI Symbol';
     /* background: #2e3440; */
     overflow: hidden;
 }
