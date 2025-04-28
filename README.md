@@ -3,12 +3,26 @@
 Properly implemented proxy for GitHub running on Cloudflare Workers,
 trying to be feature-rich while not bloated.
 
-# Usage
+## Key Features
+
+- Native GitHub domain proxy (github.com, gist.githubusercontent.com, etc.)
+- Automatic handling of raw files and large downloads
+- TypeScript-based implementation
+
+## Usage Guide
+
+### Installation
 
 ```bash
-npm i
-npm run build
-npm run deploy
+pnpm install
+```
+
+### Configuration
+
+### Deployment
+
+```bash
+pnpm run build && pnpm run deploy
 ```
 
 ## Acknowledgements
@@ -18,4 +32,4 @@ npm run deploy
 
 ## License
 
-MIT
+[MIT License](LICENSE)
