@@ -11,7 +11,6 @@
     "build": "rimraf dist && parcel build",
     "update": "pnpm update",
     "deploy": "pnpm test && rimraf dist && parcel build && wrangler pages deploy dist",
-    "lint": "eslint .",
     "size": "size-limit",
     "dev": "wrangler pages dev dist",
     "test": "pnpm run size"
@@ -22,9 +21,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250319.0",
-    "@mochaa/eslintrc": "0.1.12",
     "@size-limit/preset-small-lib": "11.2.0",
-    "eslint": "9.23.0",
     "parcel": "2.13.3",
     "rimraf": "6.0.1",
     "size-limit": "11.2.0",
