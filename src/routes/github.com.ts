@@ -2,6 +2,7 @@ import {Router} from 'worktop';
 import {reply} from 'worktop/response';
 import forbidRepo from '../filter/repo';
 import forbidUser from '../filter/user';
+import { auth } from '../filter/auth';
 import {type ArchiveFormat, codeload} from './codeload.github.com';
 import {raw} from './raw.githubusercontent.com';
 
@@ -9,6 +10,9 @@ const app = new Router<Bindings>();
 
 // Tag names can include slashes, bailing out.
 app.add('GET', '/:user/:repo/releases/download/*', async (request, context) => {
+    // 执行密码认证检查
+    const authResponse = auth(request);
+    if (authResponse) return authResponse;
 	const {user, repo, '*': wild} = context.params;
 	if (forbidUser(user) || forbidRepo({user, repo})) {
 		return reply(403);
@@ -31,6 +35,8 @@ app.add('GET', '/:user/:repo/releases/download/*', async (request, context) => {
 
 // GitHub uses this to prevent confusion between a tag named `latest` and the latest release
 app.add('GET', '/:user/:repo/releases/latest/download/:artifact', async (request, context) => {
+	const authResponse = auth(request);
+    if (authResponse) return authResponse;
 	const {user, repo, artifact} = context.params;
 	if (forbidUser(user) || forbidRepo({user, repo})) {
 		return reply(403);
@@ -52,6 +58,8 @@ app.add('GET', '/:user/:repo/releases/latest/download/:artifact', async (request
 });
 
 app.add('GET', '/:user/:repo/archive/*', async (_, context) => {
+	const authResponse = auth(_);
+    if (authResponse) return authResponse;
 	const {user, repo, '*': wild} = context.params;
 	if (forbidUser(user) || forbidRepo({user, repo})) {
 		return reply(403);
@@ -73,6 +81,8 @@ app.add('GET', '/:user/:repo/archive/*', async (_, context) => {
 });
 
 app.add('GET', '/:user/:repo/zipball/*', async (_, context) => {
+	const authResponse = auth(_);
+    if (authResponse) return authResponse;
 	const {user, repo, '*': reference} = context.params;
 	if (forbidUser(user) || forbidRepo({user, repo})) {
 		return reply(403);
@@ -82,6 +92,8 @@ app.add('GET', '/:user/:repo/zipball/*', async (_, context) => {
 });
 
 app.add('GET', '/:user/:repo/tarball/*', async (_, context) => {
+	const authResponse = auth(_);
+    if (authResponse) return authResponse;
 	const {user, repo, '*': reference} = context.params;
 	if (forbidUser(user) || forbidRepo({user, repo})) {
 		return reply(403);
@@ -91,6 +103,8 @@ app.add('GET', '/:user/:repo/tarball/*', async (_, context) => {
 });
 
 app.add('GET', '/:user/:repo/raw/*', async (_, context) => {
+	const authResponse = auth(_);
+    if (authResponse) return authResponse;
 	const {user, repo, '*': path} = context.params;
 	if (forbidUser(user) || forbidRepo({user, repo})) {
 		return reply(403);
@@ -100,6 +114,8 @@ app.add('GET', '/:user/:repo/raw/*', async (_, context) => {
 });
 
 app.add('GET', '/:user/:repo/info/refs', async (request, context) => {
+	const authResponse = auth(request);
+    if (authResponse) return authResponse;
 	const service = context.url.searchParams.get('service');
 	if (service === null) {
 		return reply(403, `Please upgrade your git client.
@@ -128,6 +144,8 @@ GitHub.com no longer supports git over dumb-http: https://github.com/blog/809`);
 });
 
 app.add('POST', '/:user/:repo/git-upload-pack', async (request, context) => {
+	const authResponse = auth(request);
+    if (authResponse) return authResponse;
 	const {user, repo} = context.params;
 	if (forbidUser(user) || forbidRepo({user, repo})) {
 		return reply(403);

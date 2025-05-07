@@ -12,7 +12,7 @@
     "update": "pnpm update",
     "deploy": "pnpm test && rimraf dist && parcel build && wrangler pages deploy dist",
     "size": "size-limit",
-    "dev": "wrangler pages dev dist",
+    "dev": "rimraf dist && wrangler pages dev dist",
     "test": "pnpm run size"
   },
   "browserslist": "Firefox ESR, iOS >= 12.5, Chrome >= 87",
