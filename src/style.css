@@ -1,11 +1,8 @@
-@import 'npm:ress';
-@import 'npm:nord/src/nord.css';
-
 body {
     font-family: -apple-system, BlinkMacSystemFont, system-ui, Roboto,
         'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
         'Segoe UI Emoji', 'Segoe UI Symbol';
-    background: var(--nord0);
+    /* background: #2e3440; */
     overflow: hidden;
 }
 
@@ -28,66 +25,175 @@ h1 {
     display: flex;
     flex-direction: column;
     width: 75%;
-    max-width: 364px;
+    /* max-width: 364px; */
     padding: 24px;
-    background: var(--nord4);
-    color: var(--nord0);
+    background: #d8dee9;
+    color: #2e3440;
     border-radius: 4px;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     overflow: hidden;
 }
 
+.tips, .example {
+    color: #7b7b7b;
+    position: relative;
+    align-self: flex-start;
+    margin-left: 2.5em;
+}
+
+
+.niceButton {
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    background-color: #10b9d6;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 24px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    float: right;
+    position: relative;
+    
+    &:hover {
+        background: #1795bb;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.niceButton:hover {
+    background-color: #1795bb;
+}
+.niceButton:active {
+    background-color: #1795bb;
+    box-shadow: 0 5px #666;
+    transform:translateY(4px);
+}
+
+.wapper {
+    background-color: #88c0d0;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#quicktext {
+    font-size: 16px;
+    color: #000;
+    
+}
+
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+
 a {
-    text-decoration-color: var(--nord10);
-    color: var(--nord10);
+    text-decoration-color: #5e81ac;
+    color: #5e81ac;
 }
 
 hr {
 	border: none;
-	border-bottom: solid 1px var(--nord0);
+	border-bottom: solid 1px #2e3440;
 	opacity: 0.12;
     margin: 4px 0 24px;
 }
 
 form {
     display: flex;
-	height: 24px;
+    gap: 4px;
+    height: 40px;
+    width: 100%;
+    
     #q {
-        flex-grow: 1;
-        outline-style: none;
+        flex: 1;
+        height: 100%;
+        padding: 0 16px;
+        border: 2px solid #5e81ac;
+        border-radius: 20px;
+        background: #e5e9f0;
+        font-size: 14px;
+        transition: all 0.2s ease;
+
+        &:focus {
+            background: #d8dee9;
+            box-shadow: 0 0 0 2px rgba(94, 129, 172, 0.3);
+            outline: none;
+        }
     }
+
     button {
-    	height: 24px;
-    	width: 24px;
-    	&:hover, &:focus {
-    		background: var(--nord1);
-    		color: var(--nord4);
-    	}
-    }
-    &::before {
-    	content: '';
-    	width: 100%;
-    	margin-right: -100%;
-		border-bottom: solid 1px var(--nord0);
+        height: 100%;
+        padding: 0 24px;
+        background: #5e81ac;
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+
+        &:hover {
+            background: #4c6a8c;
+            transform: translateY(-1px);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
     }
 }
 
 .input {
 	display: flex;
 	flex-direction: column;
-	&::after {
-		content: '';
-		border-top: solid 2px var(--nord10);
-		margin-top: -1.5px;
-		align-self: center;
-		width: 0;
-		transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
-		@media not (prefers-reduced-motion) {
-			transition: width 0.2s;
-		}
-	}
-	&:has(form > #q:focus)::after {
-		width: 100%;
-	}
-	margin-bottom: 24px;
+	margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+
+.github-corner:hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave {
+
+    0%,
+    100% {
+        transform: rotate(0)
+    }
+
+    20%,
+    60% {
+        transform: rotate(-25deg)
+    }
+
+    40%,
+    80% {
+        transform: rotate(10deg)
+    }
+}
+
+@media (max-width:500px) {
+    .github-corner:hover .octo-arm {
+        animation: none
+    }
+
+    .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+    }
 }

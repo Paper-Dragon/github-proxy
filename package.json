@@ -3,23 +3,21 @@
   "type": "module",
   "private": true,
   "description": "GitHub proxy on Cloudflare Workers",
-  "author": "mochaaP <npm@mochaa.ws>",
+  "author": "mochaaP <npm@mochaa.ws> && Paperdragon <2678885646@qq.com>",
   "license": "MIT",
-  "repository": "https://github.com/mchaNetwork/github-proxy",
+  "repository": "https://github.com/Paper-Dragon/github-proxy",
   "main": "dist/_worker.js",
   "scripts": {
     "build": "rimraf dist && parcel build",
-    "deploy": "bun run test && bun run build && wrangler pages deploy dist",
-    "lint": "eslint .",
+    "update": "pnpm update",
+    "deploy": "pnpm test && rimraf dist && parcel build && wrangler pages deploy dist",
     "size": "size-limit",
-    "start": "wrangler pages dev dist --compatibility-date=2024-12-01",
-    "test": "bun run lint && bun run size"
+    "dev": "wrangler pages dev dist",
+    "test": "pnpm run size"
   },
   "browserslist": "Firefox ESR, iOS >= 12.5, Chrome >= 87",
   "dependencies": {
-    "nord": "nordtheme/nord",
-    "ress": "^5.0.2",
-    "worktop": "next"
+    "worktop": "0.8.0-next.18"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "4.20260310.1",
