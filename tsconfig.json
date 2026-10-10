@@ -21,5 +21,8 @@
     "verbatimModuleSyntax": true,
     /* Linting */
     "skipLibCheck": true
-  }
+  },
+  "include": [
+    "src"
+  ]
 }

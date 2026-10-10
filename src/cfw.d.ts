@@ -6,8 +6,4 @@ declare global {
 			ASSETS: Fetcher;
 		};
 	} & Context;
-
-	const process: {
-		env: Record<string, string>;
-	};
 }
