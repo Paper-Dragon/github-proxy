@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>GitHub Proxy</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="color-scheme" content="light dark" />
+	<title>GitHub Proxy - GitHub 文件加速</title>
 	<link rel="stylesheet" href="style.css" />
 	<link rel="icon" href="favicon.svg" />
 	<meta name="robots" content="noindex nofollow" />
-	
+
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-EVBL6064XR"></script>
 	<script>
@@ -19,26 +19,11 @@
 
 	gtag('config', 'G-EVBL6064XR');
 	</script>
-
-	<style type="text/css">
-		.wrapper {
-			position: relative;
-		}
-
-		#quickinput {
-			position: absolute;
-			top: 0;
-			left: 0;
-			opacity: 0;
-			z-index: -10;
-		}
-	</style>
 </head>
 
 <body>
-	<a href="https://github.com/Paper-Dragon/github-proxy" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80"
-			viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
-			aria-hidden="true">
+	<a href="https://github.com/Paper-Dragon/github-proxy" class="github-corner" aria-label="View source on GitHub"><svg width="72" height="72"
+			viewBox="0 0 250 250" aria-hidden="true">
 			<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
 			<path
 				d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
@@ -47,85 +32,155 @@
 				d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
 				fill="currentColor" class="octo-body"></path>
 		</svg></a>
-	<div class="main">
-		<div class="card">
-			<h1>🐙 GitHub Proxy</h1>
-			<div class="input">
-				<form
-					onsubmit="let inputValue = document.getElementById('q').value.trim(); if (inputValue !== '') {window.open(baseUrl + inputValue);}; return false;">
-					<input type="url" id="q" placeholder="https://github.com/…" autofocus
-						oninput="document.getElementById('quicktext').textContent = baseUrl + document.getElementById('q').value;" />
-					<button type="submit">点击下载</button>
-				</form>
-			</div>
-			<div class="quickcopy">
-				<div class="wapper">
-					<a id="quicktext">https://github.geekery.cn/</a><textarea id="quickinput">这是幕后黑手</textarea>
-					<button class="niceButton"
-						onclick="var text = document.getElementById('quicktext').innerHTML; var quickText = document.getElementById('quickinput'); quickText.value = text; quickText.select(); document.execCommand('copy');">复制到粘贴板</button>
-				</div>
-			</div>
-			<p id="expires" hidden></p>
-			<footer>
-				<div class="tips">
-					<p>
-						GitHub文件链接带不带协议头都可以，支持release、archive以及文件，右键复制出来的链接都是符合标准的。
-					</p>
-					<p>注意，不支持项目文件夹，请使用Git。</p>
-				</div>
 
-				<div class="example">
-					<p>
-						<a style="color: #3498db; font-weight: bold;">分支源码: </a> 
-						<a style="color: #2c3e50;" class="base">https://github.geekery.cn/</a><a>https://github.com/user/project/archive/master.zip</a>
-					</p>
-					<p>
-						<a style="color: #3498db; font-weight: bold;">release源码:</a>
-						<a style="color: #2c3e50;" class="base">https://github.geekery.cn/</a><a>https://github.com/user/project/archive/v0.1.0.tar.gz</a>
-					</p>
-					<p>
-						<a style="color: #3498db; font-weight: bold;">release文件: </a>
-						<a style="color: #2c3e50;" class="base">https://github.geekery.cn/</a><a>https://github.com/user/project/releases/download/v0.1.0/example.zip</a>
-					</p>
-					<p>
-						<a style="color: #3498db; font-weight: bold;">分支文件: </a>
-						<a style="color: #2c3e50;" class="base">https://github.geekery.cn/</a><a>https://github.com/user/project/blob/master/filename</a>
-					</p>
-					<p>
-						<a style="color: #3498db; font-weight: bold;">Raw: </a>
-						<a style="color: #2c3e50;" class="base">https://github.geekery.cn/</a><a>https://raw.githubusercontent.com/user/project/archive/master.zip</a>
-					</p>
-					<p>
-						<a style="color: #3498db; font-weight: bold;">使用Git: </a>
-						<a style="color: #2c3e50;">git clone <span class="base">https://github.geekery.cn/</span></a><a>https://github.com/user/project</a>
-					</p>
+	<main class="main">
+		<div class="card">
+			<header class="hero">
+				<span class="logo" aria-hidden="true">🐙</span>
+				<div>
+					<h1>GitHub Proxy</h1>
+					<p class="subtitle">Release、源码包、Raw 文件与 git clone 加速下载</p>
 				</div>
-				
-				
-				不会用？<a href="https://www.geekery.cn/free-service/github-direct.html">点击这里访问文档或者问问先辈们</a>
+			</header>
+
+			<form id="form" class="search" autocomplete="off">
+				<input type="text" id="q" inputmode="url" spellcheck="false" autofocus
+					aria-label="GitHub 链接" placeholder="粘贴 GitHub 文件或仓库链接" />
+				<button type="submit">下载</button>
+			</form>
+
+			<div class="result">
+				<code id="result"></code>
+				<div class="actions">
+					<button type="button" class="secondary" id="copy">复制链接</button>
+					<button type="button" class="secondary" id="copy-git" hidden>复制 git clone</button>
+				</div>
+			</div>
+
+			<p class="status" id="status" hidden><span class="dot"></span><span id="status-text"></span></p>
+
+			<section class="usage">
+				<h2>支持的链接</h2>
+				<ul class="examples">
+					<li>
+						<span class="label">Release 文件</span>
+						<code>https://github.com/user/repo/releases/download/v1.0.0/app.zip</code>
+					</li>
+					<li>
+						<span class="label">分支源码</span>
+						<code>https://github.com/user/repo/archive/refs/heads/main.zip</code>
+					</li>
+					<li>
+						<span class="label">Tag 源码</span>
+						<code>https://github.com/user/repo/archive/v1.0.0.tar.gz</code>
+					</li>
+					<li>
+						<span class="label">仓库文件</span>
+						<code>https://github.com/user/repo/blob/main/README.md</code>
+					</li>
+					<li>
+						<span class="label">Raw</span>
+						<code>https://raw.githubusercontent.com/user/repo/main/README.md</code>
+					</li>
+					<li>
+						<span class="label">Gist</span>
+						<code>https://gist.githubusercontent.com/user/gist-id/raw/file.txt</code>
+					</li>
+					<li>
+						<span class="label">git clone</span>
+						<code>git clone https://github.com/user/repo</code>
+					</li>
+				</ul>
+				<p class="hint">在上方输入框粘贴以上任意一种链接即可。链接带不带 <code>https://</code> 都可以；不支持下载整个文件夹，请使用 git clone。</p>
+			</section>
+
+			<footer class="footer">
+				不会用？<a href="https://www.geekery.cn/free-service/github-direct.html">查看使用文档</a>
 			</footer>
 		</div>
-	</div>
+	</main>
+
+	<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 	<script>
 		var baseUrl = location.origin + '/';
 		var refreshTimer;
+		var toastTimer;
+		var input = document.getElementById('q');
+		var result = document.getElementById('result');
+		var copyGit = document.getElementById('copy-git');
+		var repoPattern = /^(https?:\/\/)?github\.com\/[^/\s]+\/[^/\s]+?(\.git)?\/?$/i;
+
+		function target() {
+			var value = input.value.trim();
+			if (value.indexOf(baseUrl) === 0) {
+				value = value.slice(baseUrl.length);
+			}
+
+			return value;
+		}
+
+		function update() {
+			var value = target();
+			result.textContent = baseUrl + value;
+			copyGit.hidden = !repoPattern.test(value);
+		}
+
+		function toast(message) {
+			var element = document.getElementById('toast');
+			element.textContent = message;
+			element.classList.add('show');
+			clearTimeout(toastTimer);
+			toastTimer = setTimeout(function () {
+				element.classList.remove('show');
+			}, 1800);
+		}
+
+		function copy(text) {
+			function fallback() {
+				var area = document.createElement('textarea');
+				area.value = text;
+				area.setAttribute('readonly', '');
+				area.style.position = 'fixed';
+				area.style.opacity = '0';
+				document.body.appendChild(area);
+				area.select();
+				document.execCommand('copy');
+				document.body.removeChild(area);
+				toast('已复制到剪贴板');
+			}
+
+			if (navigator.clipboard && window.isSecureContext) {
+				navigator.clipboard.writeText(text).then(function () {
+					toast('已复制到剪贴板');
+				}, fallback);
+			} else {
+				fallback();
+			}
+		}
+
+		function formatTime(timestamp) {
+			var date = new Date(timestamp);
+			var options = {hour: '2-digit', minute: '2-digit'};
+			if (date.toDateString() !== new Date().toDateString()) {
+				options.month = 'numeric';
+				options.day = 'numeric';
+			}
+
+			return date.toLocaleString('zh-CN', options);
+		}
 
 		function render(credential) {
 			baseUrl = location.origin + '/' + (credential ? credential.token + '/' : '');
-			document.getElementById('quicktext').textContent = baseUrl + document.getElementById('q').value;
-			document.querySelectorAll('.base').forEach(function (element) {
-				element.textContent = baseUrl;
-			});
+			update();
 			if (!credential) {
 				return;
 			}
 
-			var expires = document.getElementById('expires');
-			expires.textContent = '当前链接有效期至 ' + new Date(credential.expires).toLocaleString() + '，本页会自动更新链接，过期后请重新复制。';
-			expires.hidden = false;
-			window.GHP = credential;
+			document.getElementById('status-text').textContent = '当前链接 ' + formatTime(credential.expires) + ' 前有效，页面会自动更新，过期后请重新复制';
+			document.getElementById('status').hidden = false;
 			clearTimeout(refreshTimer);
-			refreshTimer = setTimeout(refresh, Math.max(credential.refresh - Date.now(), 0) + 1000);
+			refreshTimer = setTimeout(refresh, Math.max(credential.refreshIn, 5000) + 1000);
 		}
 
 		function refresh() {
@@ -137,10 +192,28 @@
 				});
 		}
 
-		document.addEventListener('visibilitychange', function () {
-			if (!document.hidden && window.GHP && Date.now() >= window.GHP.refresh) {
-				refresh();
+		input.addEventListener('input', update);
+
+		document.getElementById('form').addEventListener('submit', function (event) {
+			event.preventDefault();
+			var value = target();
+			if (value === '') {
+				input.focus();
+				input.classList.remove('shake');
+				void input.offsetWidth;
+				input.classList.add('shake');
+				return;
 			}
+
+			window.open(baseUrl + value, '_blank', 'noopener');
+		});
+
+		document.getElementById('copy').addEventListener('click', function () {
+			copy(result.textContent);
+		});
+
+		copyGit.addEventListener('click', function () {
+			copy('git clone ' + baseUrl + target());
 		});
 
 		render(window.GHP);

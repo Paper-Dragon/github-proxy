@@ -23,7 +23,12 @@ const currentWindow = () => Math.floor(Date.now() / 1000 / ttl());
 // A token stays valid until the end of the window after the one it was issued in.
 export async function issue() {
 	const window = currentWindow();
-	return {token: await sign(window), refresh: (window + 1) * ttl() * 1000, expires: (window + 2) * ttl() * 1000};
+	const refresh = (window + 1) * ttl() * 1000;
+	return {
+		token: await sign(window),
+		refreshIn: refresh - Date.now(),
+		expires: refresh + (ttl() * 1000),
+	};
 }
 
 export async function verify(token: string) {
