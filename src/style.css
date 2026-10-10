@@ -92,7 +92,7 @@ button {
 
 .card {
     width: 100%;
-    max-width: 760px;
+    max-width: 920px;
     padding: 32px;
     background: var(--card);
     border: 1px solid var(--border);
@@ -131,13 +131,13 @@ button {
     input {
         flex: 1;
         min-width: 0;
-        height: 46px;
-        padding: 0 16px;
-        font-size: 15px;
+        height: 40px;
+        padding: 0 14px;
+        font-size: 14px;
         color: var(--text);
         background: var(--code-bg);
         border: 1.5px solid var(--border);
-        border-radius: 12px;
+        border-radius: 10px;
         transition: border-color 0.15s ease, box-shadow 0.15s ease;
 
         &::placeholder {
@@ -154,13 +154,14 @@ button {
 
     button {
         flex-shrink: 0;
-        height: 46px;
-        padding: 0 26px;
+        height: 40px;
+        padding: 0 20px;
+        font-size: 14px;
         font-weight: 600;
         color: #fff;
         background: var(--primary);
         border: none;
-        border-radius: 12px;
+        border-radius: 10px;
         transition: background 0.15s ease, transform 0.15s ease;
 
         &:hover {
