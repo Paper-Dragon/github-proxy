@@ -52,9 +52,9 @@
 			<h1>🐙 GitHub Proxy</h1>
 			<div class="input">
 				<form
-					onsubmit="if(document.getElementById('q').value.trim() !== '') { let inputValue = document.getElementById('q').value.trim(); if (inputValue !== '') {window.open('/' + inputValue);}; return false; }">
+					onsubmit="let inputValue = document.getElementById('q').value.trim(); if (inputValue !== '') {window.open(baseUrl + inputValue);}; return false;">
 					<input type="url" id="q" placeholder="https://github.com/…" autofocus
-						oninput="let baseUrl = 'https://github.geekery.cn/';let inputValue = document.getElementById('q').value; document.getElementById('quicktext').textContent = baseUrl + inputValue;" />
+						oninput="document.getElementById('quicktext').textContent = baseUrl + document.getElementById('q').value;" />
 					<button type="submit">点击下载</button>
 				</form>
 			</div>
@@ -65,6 +65,7 @@
 						onclick="var text = document.getElementById('quicktext').innerHTML; var quickText = document.getElementById('quickinput'); quickText.value = text; quickText.select(); document.execCommand('copy');">复制到粘贴板</button>
 				</div>
 			</div>
+			<p id="expires" hidden></p>
 			<footer>
 				<div class="tips">
 					<p>
@@ -76,27 +77,27 @@
 				<div class="example">
 					<p>
 						<a style="color: #3498db; font-weight: bold;">分支源码: </a> 
-						<a style="color: #2c3e50;">https://github.geekery.cn/</a><a>https://github.com/user/project/archive/master.zip</a>
+						<a style="color: #2c3e50;" class="base">https://github.geekery.cn/</a><a>https://github.com/user/project/archive/master.zip</a>
 					</p>
 					<p>
 						<a style="color: #3498db; font-weight: bold;">release源码:</a>
-						<a style="color: #2c3e50;">https://github.geekery.cn/</a><a>https://github.com/user/project/archive/v0.1.0.tar.gz</a>
+						<a style="color: #2c3e50;" class="base">https://github.geekery.cn/</a><a>https://github.com/user/project/archive/v0.1.0.tar.gz</a>
 					</p>
 					<p>
 						<a style="color: #3498db; font-weight: bold;">release文件: </a>
-						<a style="color: #2c3e50;">https://github.geekery.cn/</a><a>https://github.com/user/project/releases/download/v0.1.0/example.zip</a>
+						<a style="color: #2c3e50;" class="base">https://github.geekery.cn/</a><a>https://github.com/user/project/releases/download/v0.1.0/example.zip</a>
 					</p>
 					<p>
 						<a style="color: #3498db; font-weight: bold;">分支文件: </a>
-						<a style="color: #2c3e50;">https://github.geekery.cn/</a><a>https://github.com/user/project/blob/master/filename</a>
+						<a style="color: #2c3e50;" class="base">https://github.geekery.cn/</a><a>https://github.com/user/project/blob/master/filename</a>
 					</p>
 					<p>
 						<a style="color: #3498db; font-weight: bold;">Raw: </a>
-						<a style="color: #2c3e50;">https://github.geekery.cn/</a><a>https://raw.githubusercontent.com/user/project/archive/master.zip</a>
+						<a style="color: #2c3e50;" class="base">https://github.geekery.cn/</a><a>https://raw.githubusercontent.com/user/project/archive/master.zip</a>
 					</p>
 					<p>
 						<a style="color: #3498db; font-weight: bold;">使用Git: </a>
-						<a style="color: #2c3e50;">git clone https://github.geekery.cn/</a><a>https://github.com/user/project</a>
+						<a style="color: #2c3e50;">git clone <span class="base">https://github.geekery.cn/</span></a><a>https://github.com/user/project</a>
 					</p>
 				</div>
 				
@@ -105,6 +106,45 @@
 			</footer>
 		</div>
 	</div>
+	<script>
+		var baseUrl = location.origin + '/';
+		var refreshTimer;
+
+		function render(credential) {
+			baseUrl = location.origin + '/' + (credential ? credential.token + '/' : '');
+			document.getElementById('quicktext').textContent = baseUrl + document.getElementById('q').value;
+			document.querySelectorAll('.base').forEach(function (element) {
+				element.textContent = baseUrl;
+			});
+			if (!credential) {
+				return;
+			}
+
+			var expires = document.getElementById('expires');
+			expires.textContent = '当前链接有效期至 ' + new Date(credential.expires).toLocaleString() + '，本页会自动更新链接，过期后请重新复制。';
+			expires.hidden = false;
+			window.GHP = credential;
+			clearTimeout(refreshTimer);
+			refreshTimer = setTimeout(refresh, Math.max(credential.refresh - Date.now(), 0) + 1000);
+		}
+
+		function refresh() {
+			fetch('/token', {cache: 'no-store'})
+				.then(function (response) { return response.json(); })
+				.then(render)
+				.catch(function () {
+					refreshTimer = setTimeout(refresh, 30000);
+				});
+		}
+
+		document.addEventListener('visibilitychange', function () {
+			if (!document.hidden && window.GHP && Date.now() >= window.GHP.refresh) {
+				refresh();
+			}
+		});
+
+		render(window.GHP);
+	</script>
 </body>
 
 </html>
