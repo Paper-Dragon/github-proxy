@@ -85,6 +85,15 @@ app.add('GET', '/:user/:repo/raw/*', async (_, context) => {
 	return raw(user, repo, path);
 });
 
+app.add('GET', '/:user/:repo/blob/*', async (_, context) => {
+	const {user, repo, '*': path} = context.params;
+	if (forbidUser(user) || forbidRepo({user, repo})) {
+		return reply(403);
+	}
+
+	return raw(user, repo, path);
+});
+
 app.add('GET', '/:user/:repo/info/refs', async (request, context) => {
 	const service = context.url.searchParams.get('service');
 	if (service === null) {
