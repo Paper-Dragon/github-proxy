@@ -8,42 +8,57 @@ const mountProxy = (router: Router<Bindings>) => {
 	bind(router);
 };
 
+const proxy = new Router<Bindings>();
+mountProxy(proxy);
+
 const app = new Router<Bindings>();
 
-if (enabled) {
-	const proxy = new Router<Bindings>();
-	mountProxy(proxy);
+app.prepare = async (request, context) => {
+	if (!enabled()) {
+		return;
+	}
 
-	app.prepare = async (request, context) => {
-		const match = /^\/([^/]+)(\/.+)$/.exec(context.url.pathname);
-		if (match === null || !await verify(match[1])) {
-			return;
-		}
-
+	const {pathname} = context.url;
+	const match = /^\/([^/]+)(\/.+)$/.exec(pathname);
+	if (match !== null && await verify(match[1])) {
 		const url = new URL(context.url);
 		url.pathname = match[2];
 		return proxy.run(new Request(url, request), context as Bindings);
-	};
+	}
 
-	app.add('GET', '/', async (request, context) => {
-		const response = await context.bindings.ASSETS.fetch(request);
-		const credential = JSON.stringify(await issue());
-		const rewritten = new HTMLRewriter()
-			.on('title', {
-				element(element) {
-					element.before(`<script>window.GHP=${credential};</script>`, {html: true});
-				},
-			})
-			.transform(response);
-		const headers = new Headers(rewritten.headers);
-		headers.set('Cache-Control', 'no-store');
-		return new Response(rewritten.body, {status: rewritten.status, headers});
-	});
+	if (pathname !== '/' && pathname !== '/token') {
+		return context.bindings.ASSETS.fetch(request);
+	}
+};
 
-	app.add('GET', '/token', async () => Response.json(await issue(), {headers: {'Cache-Control': 'no-store'}}));
-} else {
-	mountProxy(app);
-}
+app.add('GET', '/', async (request, context) => {
+	const response = await context.bindings.ASSETS.fetch(request);
+	if (!enabled()) {
+		return response;
+	}
+
+	const credential = JSON.stringify(await issue());
+	const rewritten = new HTMLRewriter()
+		.on('title', {
+			element(element) {
+				element.before(`<script>window.GHP=${credential};</script>`, {html: true});
+			},
+		})
+		.transform(response);
+	const headers = new Headers(rewritten.headers);
+	headers.set('Cache-Control', 'no-store');
+	return new Response(rewritten.body, {status: rewritten.status, headers});
+});
+
+app.add('GET', '/token', async (request, context) => {
+	if (!enabled()) {
+		return context.bindings.ASSETS.fetch(request);
+	}
+
+	return Response.json(await issue(), {headers: {'Cache-Control': 'no-store'}});
+});
+
+mountProxy(app);
 
 // eslint-disable-next-line regexp/no-empty-group
 app.add('GET', /(?:)/, async (request, context) => context.bindings.ASSETS.fetch(request));

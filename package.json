@@ -10,7 +10,7 @@
   "scripts": {
     "build": "rimraf dist && parcel build",
     "update": "pnpm update",
-    "deploy": "pnpm test && rimraf dist && parcel build && wrangler pages deploy dist",
+    "deploy": "pnpm test && rimraf dist && parcel build && wrangler pages deploy dist --project-name github-proxy --branch trunk",
     "size": "size-limit",
     "dev": "wrangler pages dev dist",
     "test": "pnpm run size"

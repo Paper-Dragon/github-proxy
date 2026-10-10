@@ -1,8 +1,8 @@
-import {type Condition, matcher} from '.';
+import {env} from '../env';
+import {type Condition, matchers} from '.';
 
-const users: string[] = (process.env.GHP_BLOCKED_USERS as string | undefined ?? '').split(',');
-const rules = users.map(pattern => matcher(pattern));
+let rules: Array<Condition<string>> | undefined;
 
-const disallow: Condition<string> = user => rules.some(m => m(user));
+const disallow: Condition<string> = user => (rules ??= matchers(env.GHP_BLOCKED_USERS)).some(m => m(user));
 
 export default disallow;

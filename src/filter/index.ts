@@ -14,3 +14,6 @@ export function matcher(pattern: string): Condition<string> {
 	const _pattern = pattern.toLowerCase();
 	return (value: string) => _pattern === value.toLowerCase();
 }
+
+/** Parse a comma-separated list of patterns. */
+export const matchers = (list = '') => list.split(',').map(pattern => matcher(pattern));
